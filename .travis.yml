@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t imf_ali/web -f Dockerfile.dev .
+   
+script:
+  - docker run -e CI=true imf_ali/web npm run test
